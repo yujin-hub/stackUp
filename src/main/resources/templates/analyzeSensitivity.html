@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TA 분석시스템</title>
+<link rel="stylesheet" href="/css/analyze/style.css">
+<script type="text/javascript" src="/js/analyze/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/js/analyze/jquery.min.js"></script>
+<script type="text/javascript" src="/js/analyze/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/analyze/datepicker_kr.js"></script>
+<script type="text/javascript" src="/js/analyze/common.js"></script>
+</head>
+
+<body>
+<!-- skip navigation -->
+<div id="skip">
+	<a href="#container">본문 바로가기</a>
+</div>
+<!-- //skip navigation -->
+
+<div id="wrap">
+	<!-- header -->
+	<div id="header">
+		<!-- top -->
+		<div class="inner top">
+			<div>
+				<h1><a href="#"><span class="blind">Diquest</span></a></h1>
+				<a class="logout" href="#"><i class="ri-login-circle-line"></i>Logout</a><a class="user" href="#"><i class=" ri-account-circle-line"></i>adminsuper</a>
+			</div>
+		</div>
+		<!-- //.top -->
+		
+		<!-- nav -->
+		<div class="inner nav">
+			<div>
+				<a href="#" class="logo">TA 분석시스템</a>
+				<ul class="nav_menu">
+					<li><a href="#">키워드 분석</a></li>
+					<li><a href="#">연관어 분석</a></li>
+					<li><a href="#" class="active">감성 분석</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- //.nav -->
+	</div>
+	<!-- //.header -->
+	
+	<!-- container -->
+	<div id="container">
+		<div class="inner">
+			<!-- search_option -->
+			<div class="search_option">
+				<div class="title_23">연관어 분석</div>
+				<div class="option mt20">
+					<div class="select_arr w190">
+						 <select id="optionOrder" name="optionOrder" title="검색">
+							<option>조회구분</option>
+							<option>일별</option>
+							<option>주별</option>
+							<option>월별</option>
+							<option>년별</option>
+						</select>
+					</div>
+					<div class="inlineB ml7"><input type="text" class="w150 date_time mr5" title="검색 시작일 입력" /> <span class="pl10 pr10">~</span> <input type="text" class="w150 date_time mr5" title="검색 종료일 입력" /></div>
+					<div class="select_arr w190 ml17">
+						 <select id="optionOrder" name="optionOrder" title="검색">
+							<option>카테고리</option>
+							<option>전체</option>
+							<option>블로그</option>
+							<option>뉴스</option>
+							<option>커뮤니티</option>
+							<option>트위터</option>
+						</select>
+					</div>
+					<input type="text" id="text-input" class="form-control w341 ml17" placeholder="키워드 입력">
+					<a href="#" class="btn btnb ml7">조회</a>
+				 </div>
+			</div>
+			<!-- //.search_option -->
+			
+			<!-- row -->
+			<div class="row">
+				<div class="section">
+					<div class="title_18">긍부정 현황</div>
+					<div class="card">
+						<div class="graph"><p><img src="/images/analyze/ex_img05.png" alt="그래프"/></p></div>
+					</div>
+				</div>
+				
+				<div class="section">
+					<div class="title_18">카테고리별 현황</div>
+					<div class="card">
+						<div class="graph"><p><img src="/images/analyze/ex_img06.png" alt="그래프"/></p></div>
+					</div>
+				</div>
+			</div>
+			<!-- //.row -->
+			
+			<!-- row -->
+			<div class="row">
+				<div class="section w400">
+					<div class="title_18">긍부정 키워드</div>
+					<div class="card">
+						<table class="table_sm">
+							<colgroup>
+								<col class="wf15">
+								<col>
+								<col class="wf25">
+								<col class="wf25">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>순위</th>
+									<th>키워드</th>
+									<th>긍부정</th>
+									<th>언급량</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td><a href="#">삼성전자</a></td>
+									<td>긍정</td>
+									<td>1,203</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td><a href="#">기업</a></td>
+									<td>부정</td>
+									<td>1,109</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td><a href="#">경기</a></td>
+									<td>중립</td>
+									<td>1,070</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td><a href="#">시장</a></td>
+									<td>긍정</td>
+									<td>960</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td><a href="#">sk</a></td>
+									<td>부정</td>
+									<td>803</td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td><a href="#">반도체</a></td>
+									<td>중립</td>
+									<td>706</td>
+								</tr>
+								<tr>
+									<td>7</td>
+									<td><a href="#">투자</a></td>
+									<td>긍정</td>
+									<td>680</td>
+								</tr>
+								<tr>
+									<td>8</td>
+									<td><a href="#">현대</a></td>
+									<td>부정</td>
+									<td>540</td>
+								</tr>
+								<tr>
+									<td>9</td>
+									<td><a href="#" class="on">애플</a></td>
+									<td>중립</td>
+									<td>490</td>
+								</tr>
+								<tr>
+									<td>10</td>
+									<td><a href="#">Lg</a></td>
+									<td>긍정</td>
+									<td>330</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div class="section w840">
+					<div class="card mt33">
+						<div class="graph"><p><img src="/images/analyze/ex_img02.png" alt="그래프"/></p></div>
+					</div>
+				</div>
+			</div>
+			<!-- //.row -->
+				
+			<!-- row -->
+			<div class="row">
+				<div class="slick_wrap">
+					<button type="button" class="slick_arr prev" disabled><i class="ri-arrow-left-s-line"></i></button>
+					<div class="slick_slide calendar">
+						<div>
+							<table>
+								<colgroup>
+									<col class="wf20">
+									<col>
+									<col class="wf32">
+								</colgroup>
+								<thead>
+									<tr>
+										<th colspan="3">09월 01일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td><a href="#">계좌</a></td>
+										<td>344<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><a href="#">HTS</a></td>
+										<td>5 <span class="data_arr arr_down"><i class="ri-arrow-down-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td><a href="#">계좌선택</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td><a href="#">문의</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td><a href="#">소액</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td><a href="#">진행</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td><a href="#">투자증권</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td><a href="#">해당 금액</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td><a href="#">.MY</a></td>
+										<td>1<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td><a href="#">D+1</a></td>
+										<td>4<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div>
+							<table>
+								<colgroup>
+									<col class="wf20">
+									<col>
+									<col class="wf32">
+								</colgroup>
+								<thead>
+									<tr>
+										<th colspan="3">09월 02일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td><a href="#">계좌</a></td>
+										<td>344<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><a href="#">HTS</a></td>
+										<td>5 <span class="data_arr arr_down"><i class="ri-arrow-down-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td><a href="#">계좌선택</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td><a href="#">문의</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td><a href="#">소액</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td><a href="#">진행</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td><a href="#">투자증권</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td><a href="#">해당 금액</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td><a href="#">.MY</a></td>
+										<td>1<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td><a href="#">D+1</a></td>
+										<td>4<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div>
+							<table>
+								<colgroup>
+									<col class="wf20">
+									<col>
+									<col class="wf32">
+								</colgroup>
+								<thead>
+									<tr>
+										<th colspan="3">09월 03일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td><a href="#">계좌</a></td>
+										<td>344<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><a href="#">HTS</a></td>
+										<td>5 <span class="data_arr arr_down"><i class="ri-arrow-down-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td><a href="#">계좌선택</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td><a href="#">문의</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td><a href="#">소액</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td><a href="#">진행</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td><a href="#">투자증권</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td><a href="#">해당 금액</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td><a href="#">.MY</a></td>
+										<td>1<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td><a href="#">D+1</a></td>
+										<td>4<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div>
+							<table>
+								<colgroup>
+									<col class="wf20">
+									<col>
+									<col class="wf32">
+								</colgroup>
+								<thead>
+									<tr>
+										<th colspan="3">09월 04일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td><a href="#">계좌</a></td>
+										<td>344<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><a href="#">HTS</a></td>
+										<td>5 <span class="data_arr arr_down"><i class="ri-arrow-down-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td><a href="#">계좌선택</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td><a href="#">문의</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td><a href="#">소액</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td><a href="#">진행</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td><a href="#">투자증권</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td><a href="#">해당 금액</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td><a href="#">.MY</a></td>
+										<td>1<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td><a href="#">D+1</a></td>
+										<td>4<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div>
+							<table>
+								<colgroup>
+									<col class="wf20">
+									<col>
+									<col class="wf32">
+								</colgroup>
+								<thead>
+									<tr>
+										<th colspan="3">09월 05일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td><a href="#">계좌</a></td>
+										<td>344<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><a href="#">HTS</a></td>
+										<td>5 <span class="data_arr arr_down"><i class="ri-arrow-down-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td><a href="#">계좌선택</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td><a href="#">문의</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td><a href="#">소액</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div>
+							<table>
+								<colgroup>
+									<col class="wf20">
+									<col>
+									<col class="wf32">
+								</colgroup>
+								<thead>
+									<tr>
+										<th colspan="3">09월 06일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td><a href="#">계좌</a></td>
+										<td>344<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><a href="#">HTS</a></td>
+										<td>5 <span class="data_arr arr_down"><i class="ri-arrow-down-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td><a href="#">계좌선택</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td><a href="#">문의</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td><a href="#">소액</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td><a href="#">진행</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td><a href="#">투자증권</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td><a href="#">해당 금액</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div>
+							<table>
+								<colgroup>
+									<col class="wf20">
+									<col>
+									<col class="wf32">
+								</colgroup>
+								<thead>
+									<tr>
+										<th colspan="3">09월 07일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td><a href="#">계좌</a></td>
+										<td>344<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><a href="#">HTS</a></td>
+										<td>5 <span class="data_arr arr_down"><i class="ri-arrow-down-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td><a href="#">계좌선택</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td><a href="#">문의</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td><a href="#">소액</a></td>
+										<td><span class="new">NEW</span></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td><a href="#">진행</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td><a href="#">투자증권</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td><a href="#">해당 금액</a></td>
+										<td><span class="data_arr same">-</span></td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td><a href="#">.MY</a></td>
+										<td>1<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td><a href="#">D+1</a></td>
+										<td>4<span class="data_arr arr_up"><i class="ri-arrow-up-s-fill"></i></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<button type="button" class="slick_arr next"><i class="ri-arrow-right-s-line"></i></button>
+				</div>
+			</div>
+			<!-- //.row -->
+			
+			<!-- row -->
+			<div class="row">
+				<div class="table_type1">
+					<!-- table_title -->
+					<div class="table_title">
+						<div class="title">총 <strong class="red">1,002</strong>건</div>
+						<div class="alR">
+							<div class="select_arr w150">
+								<select id="optionOrder" name="optionOrder" title="검색">
+									<option>10개씩 보기</option>
+									<option>20개씩 보기</option>
+									<option>50개씩 보기</option>
+									<option>100개씩 보기</option>
+								</select>
+							</div>
+							<a href="#" class="btn btnm_line icon_down ml7"><i class="ri-download-line"></i> 다운로드</a>
+						</div>
+					</div>
+					<!-- //.table_title -->
+					
+					<!-- table -->
+					<table>
+						<colgroup>
+							<col class="wf7">
+							<col class="wf10">
+							<col class="wf10">
+							<col>
+							<col class="wf10">
+							<col class="wf10">
+							<col class="wf13">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>번호 <a href="#" class="purple"><i class="ri-arrow-down-s-fill"></i></a></th>
+								<th>구분 <a href="#" class="purple"><i class="ri-arrow-up-s-fill"></i></a></th>
+								<th>사이트</th>
+								<th>제목</th>
+								<th>게시자</th>
+								<th>게시일 <a href="#"><i class="ri-expand-up-down-fill"></i></a></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>뉴스</td>
+								<td>경향신문</td>
+								<td class="alL">
+									<a href="#" class="type1">
+										<dl>
+											<dt>LG전자 "<strong class="red">스마트</strong> 라이프 솔루션 기업으로"…2030년 매출 100조원</dt>
+											<dd>(서울=연합뉴스) 김기훈 기자 = LG전자[066570]가 '글로벌 선도 가전 브랜드'를 넘어 고객의 다양한 경험을 연결·확장하는 '<strong class="red">스마트</strong> 라이프 솔루션 기업’으로...</dd>
+										</dl>
+									</a>
+								</td>
+								<td>변사또</td>
+								<td>2024.08.24<br>19:03:59</td>
+								<td><a href="#none" class="btn btns btns_line" onclick="common.modalPopShow('#searchOption','900');">유사문서보기</a></td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>블로그</td>
+								<td>네이버</td>
+								<td class="alL">
+									<a href="#" class="type1">
+										<dl>
+											<dt>스팀링크 앱으로 <strong class="red">스마트</strong>폰에서 디아블로4 게임 플레이</dt>
+											<dd>게임도 <strong class="red">스마트</strong>폰, 태블릿, TV로 즐길 수 있습니다. 디아블로4에서 Xbox 게임패드를...</dd>
+										</dl>
+									</a>
+								</td>
+								<td>뺑덕엄</td>
+								<td>2024.08.24<br>19:03:59</td>
+								<td><a href="#none" class="btn btns btns_line" onclick="common.modalPopShow('#searchList','1200');">유사문서보기</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- //.table -->
+					
+					<!-- paging -->
+					<div class="paging_area">
+						<span class="btn_first disabled"><a href="#"><span class="blind">첫페이지</span></a></span>
+						<span class="btn_prev disabled"><a href="#"><span class="blind">이전게시물 10개</span></a></span>
+						<span class="paging_num on"><a href="#"><span class="blind">현재페이지</span>1</a></span>
+						<span class="paging_num"><a href="#">2</a></span>
+						<span class="paging_num"><a href="#">3</a></span>
+						<span class="paging_num"><a href="#">4</a></span>
+						<span class="paging_num"><a href="#">5</a></span>
+						<span class="paging_num"><a href="#">6</a></span>
+						<span class="paging_num"><a href="#">7</a></span>
+						<span class="paging_num"><a href="#">8</a></span>
+						<span class="paging_num"><a href="#">9</a></span>
+						<span class="paging_num"><a href="#">10</a></span>
+						<span class="btn_next"><a href="#"><span class="blind">다음게시물 10개</span></a></span>
+						<span class="btn_last"><a href="#"><span class="blind">마지막페이지</span></a></span>
+					</div>
+					<!-- //.paging -->
+				</div>
+			</div>
+			<!-- //.row -->
+		</div>
+	</div>
+	<!-- //.container -->
+	
+	<!-- footer -->
+    <div id="footer">
+        <div class="inner">
+    		<span>Copyright© 2024 Diquest Corporation. All rights reserved.</span>
+	    </div>
+	</div>
+	<!-- //.footer -->
+	
+	<a href="#wrap" class="btn_top"><i class="ri-arrow-drop-up-line"></i><span class="blind">위로</span></a>
+</div>
+
+<!-- popup_container :레이업팝업은 모두 아래 popup_container 클래스 내에 위치합니다 -->
+<div class="popup_container">
+	<!-- 검색결과 상세보기 팝업 -->
+	<div id="searchOption" class="layer_box">
+		<div class="pop_head"><h2>검색결과 상세보기</h2></div>
+		<!-- cont -->
+		<div class="pop_cont">
+			<div class="table_type2">
+				<div class="title_20">LG전자 "<strong class="red">스마트</strong> 라이프 솔루션 기업으로"…2030년 매출 100조원</div>
+
+				<!-- table -->
+				<table class="mt20">
+					<colgroup>
+						<col class="wf15">
+						<col>
+						<col class="wf15">
+						<col>
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>구분</th>
+							<td>뉴스</td>
+							<th>사이트</th>
+							<td>연합뉴스</td>
+						</tr>
+						<tr>
+							<th>게시자</th>
+							<td>김기훈</td>
+							<th>게시일</th>
+							<td>2023.07.12</td>
+						</tr>
+						<tr>
+							<th>URL</th>
+							<td colspan="3"><a href="#" class="undL">https://www.yna.co.kr/view/AKR20230712026700003?input=1195m</a></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- //.table -->
+				
+				<!-- text_cont -->
+				<div class="text_cont">
+					<p>(서울=연합뉴스) 김기훈 기자 = LG전자[066570]가 '글로벌 선도 가전 브랜드'를 넘어 고객의 다양한 경험을 연결·확장하는 '<strong class="red">스마트</strong> 라이프 솔루션 기업'으로 도약하겠다는 비전을 선포했다.</p>
+					<p>이를 위해 비하드웨어(Non-HW), 기업간거래(B2B), 신사업 등 3대 신성장동력을 중점 추진하고, '2030년 매출 100조원'을 달성하겠다는 목표를 제시했다.</p>
+					<p>LG전자 최고경영자(CEO) 조주완 사장은 12일 서울 마곡 LG사이언스파크에서 기자간담회를 열고 이런 미래 비전과 중장기 사업 전략을 발표했다.</p>
+					
+					<p class="mt20">조 사장은 "앞으로 LG전자는 좋은 제품을 만드는 최고 가전 브랜드에 그치지 않고, 고객의 다양한 공간과 경험을 연결·확장하는 '<strong class="red">스마트</strong> 라이프 솔루션 기업'으로 변화·도약하는 담대한 도전을 이어갈 것"이라고 밝혔다.</p>
+					<p class="mt20">재무적으로는 2030년 '트리플 7'(연평균 성장률과 영업이익률 7% 이상, 기업가치 7배 이상) 달성을 목표로 제시했다.</p>
+					<p>또 지난해 65조원 수준(LG이노텍 제외)이었던 매출 규모를 2030년 100조원까지 끌어올리겠다고 밝혔다.</p>
+				</div>
+				<!-- //.text_cont -->
+			</div>
+		</div>
+		<!-- //.cont -->
+		
+		<!-- btn -->
+		<div class="pop_foot btn_area">
+			<a class="btn " href="#none">목록</a>
+		</div>
+		<!-- //.btn -->
+		<button type="button" class="btn_close">닫기</button>
+	</div>
+	<!-- //.검색결과 상세보기 팝업 -->
+	
+	
+	<!-- 유사문서 검색결과 팝업 -->
+	<div id="searchList" class="layer_box">
+		<div class="pop_head"><h2>유사문서 검색결과</h2></div>
+		<!-- cont -->
+		<div class="pop_cont">
+			<div class="table_type1">
+				<div class="title_16">총 <strong class="red">1,002</strong>건</div>
+
+				<!-- table -->
+				<table class="mt15">
+					<colgroup>
+						<col class="wf7">
+						<col class="wf10">
+						<col class="wf10">
+						<col>
+						<col class="wf10">
+						<col class="wf10">
+						<col class="wf10">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>번호 <a href="#" class="purple"><i class="ri-arrow-down-s-fill"></i></a></th>
+							<th>구분 <a href="#" class="purple"><i class="ri-arrow-up-s-fill"></i></a></th>
+							<th>사이트</th>
+							<th>제목</th>
+							<th>게시자</th>
+							<th>게시일 <a href="#"><i class="ri-expand-up-down-fill"></i></a></th>
+							<th>유사도</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>뉴스</td>
+							<td>경향신문</td>
+							<td class="alL">
+								<a href="#" class="type1">
+									<dl>
+										<dt>LG전자 "<strong class="red">스마트</strong> 라이프 솔루션 기업으로"…2030년 매출 100조원</dt>
+										<dd>(서울=연합뉴스) 김기훈 기자 = LG전자[066570]가 '글로벌 선도 가전 브랜드'를 넘어 고객의 다양한 경험을 연결·확장하는 '<strong class="red">스마트</strong> 라이프 솔루션 기업’으로...</dd>
+									</dl>
+								</a>
+							</td>
+							<td>변사또</td>
+							<td>2024.08.24<br>19:03:59</td>
+							<td>100%</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>블로그</td>
+							<td>네이버</td>
+							<td class="alL">
+								<a href="#" class="type1">
+									<dl>
+										<dt>스팀링크 앱으로 <strong class="red">스마트</strong>폰에서 디아블로4 게임 플레이</dt>
+										<dd>게임도 <strong class="red">스마트</strong>폰, 태블릿, TV로 즐길 수 있습니다. 디아블로4에서 Xbox 게임...</dd>
+									</dl>
+								</a>
+							</td>
+							<td>뺑덕엄</td>
+							<td>2024.08.24<br>19:03:59</td>
+							<td>80%</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- //.table -->
+
+				<!-- paging -->
+				<div class="paging_area">
+					<span class="btn_first disabled"><a href="#"><span class="blind">첫페이지</span></a></span>
+					<span class="btn_prev disabled"><a href="#"><span class="blind">이전게시물 10개</span></a></span>
+					<span class="paging_num on"><a href="#"><span class="blind">현재페이지</span>1</a></span>
+					<span class="paging_num"><a href="#">2</a></span>
+					<span class="paging_num"><a href="#">3</a></span>
+					<span class="paging_num"><a href="#">4</a></span>
+					<span class="paging_num"><a href="#">5</a></span>
+					<span class="paging_num"><a href="#">6</a></span>
+					<span class="paging_num"><a href="#">7</a></span>
+					<span class="paging_num"><a href="#">8</a></span>
+					<span class="paging_num"><a href="#">9</a></span>
+					<span class="paging_num"><a href="#">10</a></span>
+					<span class="btn_next"><a href="#"><span class="blind">다음게시물 10개</span></a></span>
+					<span class="btn_last"><a href="#"><span class="blind">마지막페이지</span></a></span>
+				</div>
+				<!-- //.paging -->
+			</div>
+		</div>
+		<!-- //.cont -->
+		
+		<button type="button" class="btn_close">닫기</button>
+	</div>
+	<!-- //.유사문서 검색결과 팝업 -->
+</div>
+<!-- //.popup_container -->
+
+</body>
+</html>
